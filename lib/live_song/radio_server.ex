@@ -63,7 +63,7 @@ defmodule LiveSong.RadioServer do
     Process.send_after(self(), :refresh, @refresh_radio_interval)
 
     Logger.debug("#{inspect(song)}")
-    Logger.info("Data provider - #{name}: song updated (timer)")
+    Logger.info("Radio provider - #{name}: song updated (timer)")
 
     {:noreply, %{module: module, name: name, song: song}}
   end
@@ -76,11 +76,11 @@ defmodule LiveSong.RadioServer do
 
     case how_many_connected do
       0 ->
-        Logger.info("Data provider - #{state.name}: no client connected, exiting")
+        Logger.info("Radio provider - #{state.name}: no client connected, exiting")
         {:stop, :normal, nil}
 
       _ ->
-        Logger.debug("Data provider - #{state.name}: #{how_many_connected} clients connected")
+        Logger.debug("Radio provider - #{state.name}: #{how_many_connected} clients connected")
 
         Process.send_after(self(), :presence, @refresh_presence_interval)
         {:noreply, state}

@@ -4,14 +4,13 @@ EXPOSE 80
 
 ARG PORT=${PORT}
 ARG SECRET_KEY_BASE=${SECRET_KEY_BASE}
+ARG ORIGIN=${ORIGIN}
 ARG MIX_ENV=${MIX_ENV}
 
 ENV PORT=${PORT} \
     SECRET_KEY_BASE=${SECRET_KEY_BASE} \
+    ORIGIN=${ORIGIN} \
     MIX_ENV=${MIX_ENV}
-
-#RUN usermod -u 1000 root
-#USER www-data
 
 RUN mkdir -p /var/www
 
