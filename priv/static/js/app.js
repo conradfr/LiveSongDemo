@@ -106,7 +106,7 @@ video.onplay = () => {
   channel.on('presence_state', payload => {
     if (payload !== null) {
       connected = Object.keys(payload).length;
-      listenersElem.innerText = `${connected} listeners.`
+      listenersElem.innerText = `${connected} listener${connected > 1 ? 's' : ''}.`
     } else {
       listenersElem.innerText = '';
     }
@@ -116,6 +116,6 @@ video.onplay = () => {
     const joins = Object.keys(payload.joins).length;
     const leaves = Object.keys(payload.leaves).length;
     connected = connected + joins - leaves;
-    listenersElem.innerText = `${connected} listeners.`;
+    listenersElem.innerText = `${connected} listener${connected > 1 ? 's' : ''}.`;
   });
 };
