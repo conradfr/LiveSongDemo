@@ -50,7 +50,7 @@ const resetSocket = () => {
   }
   channel = null;
   songElem.innerText = '';
-  listenersElem.innerText = '';
+  listenersElem.innerText = '0 listener.';
   connected = 0;
 };
 
