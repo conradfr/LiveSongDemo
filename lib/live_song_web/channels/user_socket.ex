@@ -4,6 +4,7 @@ defmodule LiveSongWeb.UserSocket do
   ## Channels
   # channel "room:*", LiveSongWeb.RoomChannel
   channel "radio:*", LiveSongWeb.RadioChannel
+  channel "logs:all*", LiveSongWeb.LogsChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

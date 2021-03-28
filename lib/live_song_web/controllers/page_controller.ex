@@ -6,8 +6,6 @@ defmodule LiveSongWeb.PageController do
   end
 
   def player(conn, _params) do
-    render(conn, "player.html",
-      layout: {LiveSongWeb.LayoutView, "player.html"})
+    render(conn, "player.html", layout: {LiveSongWeb.LayoutView, "player.html"})
   end
-
 end

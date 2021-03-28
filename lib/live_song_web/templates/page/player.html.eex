@@ -1,3 +1,3 @@
-<video id="audio" controls width="250" height="75" preload="none"></video>
+<video id="audio" controls width="250" height="50" preload="none"></video>
 <div id="song"></div>
-<div id="listeners">Click play to listen to the radio</div>
+<div id="listeners">Click play to listen to the radio and fetch data</div>

@@ -5,20 +5,21 @@
       <p>Client #1</p>
       <iframe id="client1"
               title="Client1"
-              width="400"
-              height="200"
+              width="100%"
+              height="150"
               src="<%= Routes.page_path(@conn, :player) %>?radio=fip">
       </iframe>
 
       <p>Client #2 (muted)</p>
       <iframe id="client2"
               title="Client2"
-              width="400"
-              height="200"
+              width="100%"
+              height="150"
               src="<%= Routes.page_path(@conn, :player) %>?radio=fip&muted=1">
       </iframe>
 
       <p>Open more player: <a target="_blank" href="<%= Routes.page_path(@conn, :player) %>?radio=fip">Open more FIP player</a></p>
+      <p class="firefox">Note: Firefox may not show the muted icon</p>
 
     </div>
   </article>
@@ -28,25 +29,37 @@
       <p>Client #3 (muted)</p>
       <iframe id="client3"
               title="Client3"
-              width="400"
-              height="200"
+              width="100%"
+              height="150"
               src="<%= Routes.page_path(@conn, :player) %>?radio=electro&muted=1">
       </iframe>
 
       <p>Client #4 (muted)</p>
       <iframe id="client4"
               title="Client5"
-              width="400"
-              height="200"
+              width="100%"
+              height="150"
               src="<%= Routes.page_path(@conn, :player) %>?radio=electro&muted=1">
       </iframe>
 
       <p>Open more player: <a target="_blank" href="<%= Routes.page_path(@conn, :player) %>?radio=electro">Open more electro player</a></p>
-
     </div>
   </article>
 </section>
 
-<p>Sources are available on GitHub: <a href="https://github.com/conradfr/LiveSongDemo">https://github.com/conradfr/LiveSongDemo</a></p>
+<section class="row" style="background-color: #fafbff">
+  <article class="column">
+    <h2>Logs</h2>
+    <div id="logs">
+      <div class="logs-wrapper">
+        No logs yet.
+      </div>
+    </div>
+  </article>
+</section>
 
-<p class="firefox">Note: Firefox may not show the muted icon</p>
+<section class="row top-separator-25">
+  <article class="column">
+    <p>Sources are available on GitHub: <a href="https://github.com/conradfr/LiveSongDemo">https://github.com/conradfr/LiveSongDemo</a></p>
+  </article>
+</section>

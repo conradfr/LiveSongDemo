@@ -16,6 +16,9 @@ config :live_song, LiveSongWeb.Endpoint,
   live_view: [signing_salt: "6qe7FdY5"]
 
 # Configures Elixir's Logger
+config :logger,
+  backends: [:console, LiveSong.ChannelLogsBackend]
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]

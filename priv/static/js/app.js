@@ -72,19 +72,19 @@ video.onplay = () => {
 
   socket = new Socket(`${protocol}://${url.host}/socket`);
   socket.connect();
-  socket.onError(() => {
+/*  socket.onError(() => {
     resetSocket();
-  });
+  });*/
 
   channel = socket.channel(`radio:${urlParams['radio']}`, {})
   channel.join()
     .receive('ok', resp => {
       console.log('Joined successfully', resp)
     })
-    .receive('error', resp => {
+/*    .receive('error', resp => {
       console.log('Unable to join', resp)
       resetSocket();
-    });
+    })*/;
 
   channel.on('playing', payload => {
     let song = '';
