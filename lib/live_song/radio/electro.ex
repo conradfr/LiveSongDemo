@@ -3,20 +3,28 @@ defmodule LiveSong.RadioProvider.Electro do
 
   @behaviour LiveSong.RadioProvider
 
-  @radio_endpoint "https://www.fip.fr/latest/api/graphql?operationName=NowList&variables={\"bannerPreset\":\"266x266\",\"stationIds\":[74]}&extensions={\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"151ca055b816d28507dae07f9c036c02031ed54e18defc3d16feee2551e9a731\"}}"
+  @radio_endpoint "https://api.radiofrance.fr/livemeta/live/74/webrf_fip_player"
 
   @impl true
   def get_data(name) do
     Logger.debug("Radio provider - #{name}: querying...")
 
     try do
-      @radio_endpoint
-      |> HTTPoison.get!()
-      |> Map.get(:body)
-      |> Jason.decode!()
-      |> Map.get("data", %{})
-      |> Map.get("nowList", %{})
-      |> List.first()
+      data =
+        @radio_endpoint
+        |> HTTPoison.get!()
+        |> Map.get(:body)
+        |> Jason.decode!()
+
+      now_unix = DateTime.utc_now() |> DateTime.to_unix()
+
+      if data != nil and Map.get(data, "now") != nil
+         and Map.get(data["now"], "startTime") != nil and Map.get(data["now"], "endTime") != nil
+         and now_unix >= data["now"]["startTime"] and now_unix <= data["now"]["endTime"] do
+        data
+      else
+        nil
+      end
     rescue
       _ -> nil
     end
@@ -31,7 +39,7 @@ defmodule LiveSong.RadioProvider.Electro do
 
       _ ->
         Logger.debug("Radio provider - #{name}: querying OK")
-        %{artist: data["playing_item"]["title"], title: data["playing_item"]["subtitle"]}
+        %{artist: Map.get(data["now"], "secondLine"), title: Map.get(data["now"], "firstLine")}
     end
   end
 end
